@@ -1,6 +1,9 @@
-- name: Checkout
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11
+steps:
+      # نسخة v4.1.1 - SHA مستقر جداً وموجود غالباً في كل البيئات
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 
 
+      # نسخة v4.0.2
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
@@ -10,11 +13,13 @@
       - run: npm ci
       - run: npm run build
 
+      # نسخة v3.0.0
       - name: Upload Pages Artifact
-        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa
+        uses: actions/upload-pages-artifact@a11059f0f9839446961a86895b93d406213799f9
         with:
           path: './dist'
 
-      - name: Deploy to GitHub Pages
+      # نسخة v4.0.0
+      - name: Deploy
         uses: actions/deploy-pages@d6db90164ad5b118d2d652a80c7514659966df30
         id: deployment
